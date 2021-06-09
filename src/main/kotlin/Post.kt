@@ -1,5 +1,5 @@
 data class Post(
-    val id: Int,
+    val id: Long,
     val fromId: Int,
     val createdBy: Int,
     val date: Int,
@@ -40,15 +40,18 @@ data class Post(
 
 object WallService {
     private var posts = emptyArray<Post>()
+    private var id = 0L
+
     fun add(post: Post): Post {
-        posts += post
+        posts += post.copy(id = id++)
         return posts.last()
     }
 
     fun update(post: Post): Boolean {
-        TODO()
+        val isContains = posts.contains(id)
+        return true
+
+
     }
-
 }
-
 
