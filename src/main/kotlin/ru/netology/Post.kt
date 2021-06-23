@@ -17,7 +17,7 @@ data class Post(
     val copyrightName: String,
     val copyrightType: String,
     val likesCount: Int,
-    val likesUserLikes: Boolean,
+    val likesUserLikes: String,
     val likesCanLike: Boolean,
     val likesCanPublish: Boolean,
     val reportsCount: Int,
@@ -39,13 +39,14 @@ data class Post(
 )
 
 object WallService {
-    private var posts = emptyArray<Post>()
+    var posts = emptyArray<Post>()
     private var id = 0L
 
     fun add(post: Post): Post {
         posts += post.copy(id = id++)
         return posts.last()
     }
+
 
     fun update(post: Post): Boolean {
         for ((index, original) in posts.withIndex()) {
