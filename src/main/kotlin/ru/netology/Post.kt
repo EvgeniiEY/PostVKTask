@@ -48,10 +48,19 @@ object WallService {
     }
 
     fun update(post: Post): Boolean {
-        val isContains = posts.contains(id)
-        return true
-
-
+        for ((index, original) in posts.withIndex()) {
+            if (original.id == post.id) {
+                posts[index] = post.copy(date = original.date, createdBy = original.createdBy)
+                return true
+            }
+        }
+        return false
     }
 }
+
+
+
+
+
+
 
