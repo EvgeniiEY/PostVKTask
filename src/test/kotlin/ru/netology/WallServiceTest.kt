@@ -10,7 +10,7 @@ class WallServiceTest {
 
     @Test
     fun add(post: Post) {
-        assertEquals(posts.last(), posts)
+        assertEquals(post.id == 0L, 1111)
     }
 
     @Test
