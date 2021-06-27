@@ -53,7 +53,7 @@ fun main() {
 
     println("${post2.id}")
 
-    add(post1)
+    add(post)
     add(post2)
 
 

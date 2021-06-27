@@ -9,7 +9,7 @@ import org.junit.Assert.*
 class WallServiceTest {
 
     @Test
-    fun add() {
+    fun add(post: Post) {
         assertEquals(posts.last(), posts)
     }
 
