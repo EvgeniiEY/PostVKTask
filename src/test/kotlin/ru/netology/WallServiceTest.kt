@@ -1,17 +1,26 @@
 package ru.netology
 
+
 import Post
 import WallService
+import WallService.posts
+import junit.framework.Assert.*
 import org.junit.Test
-import org.junit.Assert.*
+import org.junit.jupiter.api.AfterEach
 
 
 class WallServiceTest {
 
     @Test
-    fun add(post: Post) {
-        assertEquals(post.id == 0L, 1111)
+    fun add() {
+        assertEquals(posts[0].id == 0L, true)
     }
+
+    @AfterEach
+    fun clear() {
+        WallService.clear()
+    }
+
 
     @Test
     fun updateExisting() {
@@ -64,10 +73,10 @@ class WallServiceTest {
 ////        service.add(Post(/* заполняете поля */))
 //        // создаём информацию об обновлении
         val update = Post(
-            1,
-            1,
-            1,
-            1,
+            0,
+            2,
+            2,
+            2,
             "",
             1,
             1,
@@ -108,4 +117,6 @@ class WallServiceTest {
         // проверяем результат (используйте assertTrue или assertFalse)
         assertTrue(result)
     }
+
+
 }

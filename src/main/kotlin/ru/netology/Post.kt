@@ -1,3 +1,5 @@
+import org.junit.jupiter.api.AfterEach
+
 data class Post(
     val id: Long,
     val fromId: Int,
@@ -56,6 +58,10 @@ object WallService {
             }
         }
         return false
+    }
+    @AfterEach
+    fun clear() {
+        WallService.clear()
     }
 }
 
