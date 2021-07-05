@@ -1,12 +1,26 @@
 package ru.netology
 
+import Comments
+import Copyright
+import Donut
+import Likes
 import Post
+import Reposts
 import WallService.add
 import WallService.posts
 import WallService.update
 import java.util.Arrays
+import kotlin.text.Typography.copyright
 
 fun main() {
+
+    val objCopyright = Copyright()
+    val objLikes = Likes()
+    val objReposts = Reposts()
+    val objComments = Comments()
+    val objDonut = Donut()
+
+
     val post = Post(
         1111,
         1,
@@ -16,35 +30,21 @@ fun main() {
         1,
         1,
         1,
-        1,
+        copyright = objCopyright,
+        comments = objComments,
+        likes = objLikes,
+        donut = objDonut,
+        reposts = objReposts,
+        99,
+        "postType",
+        3,
         true,
         true,
         true,
+        22,
         true,
-        1,
-        "A",
-        "A",
-        "A",
-        1,
-        "A",
-        true,
-        true,
-        1,
-        true,
-        1,
-        "A",
-        1,
-        true,
-        true,
-        true,
-        1,
-        true,
-        true,
-        1,
-        true,
-        true,
-        "A",
-        1
+        2
+
     )
 
     println("${post.id}")

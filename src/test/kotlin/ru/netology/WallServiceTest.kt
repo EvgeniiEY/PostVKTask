@@ -1,25 +1,36 @@
 package ru.netology
 
 
+import Comments
+import Copyright
+import Donut
+import Likes
 import Post
+import Reposts
 import WallService
 import WallService.posts
 import junit.framework.Assert.*
 import org.junit.Test
-import org.junit.jupiter.api.AfterEach
+
 
 
 class WallServiceTest {
+    val objCopyright = Copyright()
+    val objLikes = Likes()
+    val objReposts = Reposts()
+    val objComments = Comments()
+    val objDonut = Donut()
+
 
     @Test
     fun add() {
         assertEquals(posts[0].id == 0L, true)
     }
 
-    @AfterEach
-    fun clear() {
-        WallService.clear()
-    }
+//    @AfterEach
+//    fun clear() {
+//        WallService.clear()
+//    }
 
 
     @Test
@@ -29,43 +40,28 @@ class WallServiceTest {
         // заполняем несколькими постами
         service.add(
             Post(
+                0,
                 1,
+                5,
+                101991,
+                "text",
+                4,
+                5,
                 1,
-                1,
-                1,
-                "",
-                1,
-                1,
-                1,
-                1,
-                true,
-                true,
-                true,
-                true,
-                1,
-                "",
-                "",
-                "",
-                1,
-                "",
-                true,
-                true,
-                1,
-                true,
-                1,
-                "",
-                1,
+                objCopyright,
+                objComments,
+                objLikes,
+                objDonut,
+                objReposts,
+                99,
+                "postType",
+                2,
                 true,
                 true,
                 true,
                 1,
                 true,
-                true,
-                1,
-                true,
-                true,
-                "",
-                1
+                2
             )
         )
 
@@ -74,42 +70,27 @@ class WallServiceTest {
 //        // создаём информацию об обновлении
         val update = Post(
             0,
+            1,
+            5,
+            101991,
+            "text",
+            4,
+            5,
+            1,
+            objCopyright,
+            objComments,
+            objLikes,
+            objDonut,
+            objReposts,
+            99,
+            "postType CHANGED !",
             2,
-            2,
-            2,
-            "",
-            1,
-            1,
-            1,
-            1,
-            true,
-            true,
-            true,
-            true,
-            1,
-            "",
-            "",
-            "",
-            1,
-            "",
-            true,
-            true,
-            1,
-            true,
-            1,
-            "",
-            1,
             true,
             true,
             true,
             1,
             true,
-            true,
-            1,
-            true,
-            true,
-            "",
-            1
+            2
         )
         // выполняем целевое действие
         val result = service.update(update)
@@ -117,6 +98,9 @@ class WallServiceTest {
         // проверяем результат (используйте assertTrue или assertFalse)
         assertTrue(result)
     }
-
+//    @AfterEach
+//    fun clear() {
+//        WallService.clear()
+//    }
 
 }

@@ -1,29 +1,19 @@
-import org.junit.jupiter.api.AfterEach
+
 
 data class Post(
     val id: Long,
     val fromId: Int,
     val createdBy: Int,
     val date: Int,
-    val text: String,
+    val text: String?,
     val replyOwnerId: Int,
     val replyPostId: Int,
     val friendsOnly: Int,
-    val commentsCount: Int,
-    val commentsCanPost: Boolean,
-    val commentsGroupsCanPost: Boolean,
-    val commentsCanClose: Boolean,
-    val commentsCanOpen: Boolean,
-    val copyrightId: Int,
-    val copyrightLink: String,
-    val copyrightName: String,
-    val copyrightType: String,
-    val likesCount: Int,
-    val likesUserLikes: String,
-    val likesCanLike: Boolean,
-    val likesCanPublish: Boolean,
-    val reportsCount: Int,
-    val reportsUserReposted: Boolean,
+    val copyright: Copyright?,
+    val comments: Comments?,
+    val likes: Likes?,
+    val donut: Donut?,
+    val reposts: Reposts,
     val viewsCount: Int,
     val postType: String,
     val signerId: Int,
@@ -32,13 +22,46 @@ data class Post(
     val canEdit: Boolean,
     val isPinned: Int,
     val isFavorite: Boolean,
-    val donutIsDonut: Boolean,
-    val donutPaidDuration: Int,
-    val donutPlaceHolder: Boolean,
-    val donutCanPublishFreeCopy: Boolean,
-    val donutEditMode: String,
+
+
     val postponedId: Int
 )
+
+class Copyright {
+    val Id = 0
+    val Link = ""
+    val Name = ""
+    val Type = ""
+}
+
+class Comments {
+    val count = 0
+    val canPost = false
+    val groupsCanPost = false
+    val canClose = false
+    val canOpen = false
+}
+
+class Likes {
+    val count = 0
+    val userLikes = false
+    val canLike = false
+    val canPublish = false
+}
+
+class Donut {
+    val isDonut = false
+    val paidDuration = 0
+    val placeHolder = false
+    val canPublishFreeCopy = false
+    val editMode = ""
+
+}
+
+class Reposts {
+    val count = 0
+    val userReposted = false
+}
 
 object WallService {
     var posts = emptyArray<Post>()
@@ -59,10 +82,7 @@ object WallService {
         }
         return false
     }
-    @AfterEach
-    fun clear() {
-        WallService.clear()
-    }
+
 }
 
 
