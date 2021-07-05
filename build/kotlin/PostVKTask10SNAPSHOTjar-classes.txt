@@ -1,1 +1,0 @@
-C:\Users\EVG\IdeaProjects\PostVKTask\build\classes\kotlin\main\Post.class;C:\Users\EVG\IdeaProjects\PostVKTask\build\classes\kotlin\main\WallService.class;C:\Users\EVG\IdeaProjects\PostVKTask\build\classes\kotlin\main\ru\netology\MainKt.class
