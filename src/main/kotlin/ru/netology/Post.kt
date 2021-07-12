@@ -1,5 +1,3 @@
-
-
 data class Post(
     val id: Long,
     val fromId: Int,
@@ -10,7 +8,7 @@ data class Post(
     val replyPostId: Int,
     val friendsOnly: Int,
     val copyright: Copyright?,
-    val comments: Comments?,
+//    val comment: Comment?,
     val likes: Likes?,
     val donut: Donut?,
     val reposts: Reposts,
@@ -22,8 +20,6 @@ data class Post(
     val canEdit: Boolean,
     val isPinned: Int,
     val isFavorite: Boolean,
-
-
     val postponedId: Int
 )
 
@@ -34,13 +30,15 @@ class Copyright {
     val Type = ""
 }
 
-class Comments {
-    val count = 0
-    val canPost = false
-    val groupsCanPost = false
-    val canClose = false
-    val canOpen = false
-}
+class Comment(
+    val ownerId: Int,
+    val postId: Long,
+    val fromGroup: Int,
+    val message: String,
+    val replyToComment: Int,
+    val stickerId: Int,
+    val guid: String
+)
 
 class Likes {
     val count = 0
@@ -66,6 +64,18 @@ class Reposts {
 object WallService {
     var posts = emptyArray<Post>()
     private var id = 0L
+    private var comments = emptyArray<Comment>()
+
+    fun createComment(comment: Comment) {
+        for ((index, original) in posts.withIndex()) {
+            if (original.id == comment.postId) {
+                comments += comment
+                return
+
+            }
+        }
+        throw PostNotFoundException("Пост с таким id не существует = ${comment.postId}")
+    }
 
     fun add(post: Post): Post {
         posts += post.copy(id = id++)
@@ -82,6 +92,10 @@ object WallService {
         }
         return false
     }
+
+}
+
+class PostNotFoundException(s: String) : Throwable() {
 
 }
 

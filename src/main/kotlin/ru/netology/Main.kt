@@ -1,6 +1,6 @@
 package ru.netology
 
-import Comments
+import Comment
 import Copyright
 import Donut
 import Likes
@@ -9,15 +9,13 @@ import Reposts
 import WallService.add
 import WallService.posts
 import WallService.update
-import java.util.Arrays
-import kotlin.text.Typography.copyright
 
 fun main() {
 
     val objCopyright = Copyright()
     val objLikes = Likes()
     val objReposts = Reposts()
-    val objComments = Comments()
+//    val objComments = Comment()
     val objDonut = Donut()
 
 
@@ -31,7 +29,7 @@ fun main() {
         1,
         1,
         copyright = objCopyright,
-        comments = objComments,
+//        comment = objComments,
         likes = objLikes,
         donut = objDonut,
         reposts = objReposts,
@@ -60,6 +58,10 @@ fun main() {
     println(update(post))
 
     println(posts.contentToString())
+
+    val comment = Comment(222222,1111,1,"Comment", 2,1,"")
+
+    WallService.createComment(comment)
 
 
 }
